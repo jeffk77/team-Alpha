@@ -1,0 +1,33 @@
+/* FONT CODING */
+h1, .card-title {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.75em;
+}
+h3 {
+    font-size: 1.5em;
+}
+h4, .card-text {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+    font-size: 0.75em;
+}
+p, li {
+    font-size: 1.25em;
+}
+
+/* GLOBAL ELEMENT CODING */
+
+
+/* HEADER SECTION CODING */
+
+
+/* MAIN CONTENT CODING */
+
+
+/* FOOTER CONTENT CODING */
