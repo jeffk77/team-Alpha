@@ -5,23 +5,24 @@ var places = {
     harbourfrontCenter: { lat: 43.638927, lng: -79.381906 }
 };
 
-var map;
+var map,
+    marker;
 
 var lcn = { lat: 43.653908, lng: -79.384293 };
 
 $(".btn").on("click", function () {
     lcn = places[$(this).val()];
     console.log(lcn);
-    console.log(places[lcn]);
-    initMap();
+    map.panTo(lcn);
+    marker.setPosition(lcn);
 });
 
-//Google Maps
+//Google Maps - only initialized once
 function initMap() {
     console.log("inside " + JSON.stringify(lcn));
     map = new google.maps.Map(document.getElementById('map'), {
         center: lcn,
         zoom: 14
     });
-    let marker = new google.maps.Marker({ position: lcn, map: map })
+    marker = new google.maps.Marker({ position: lcn, map: map })
 };
