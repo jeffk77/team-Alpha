@@ -86,7 +86,7 @@ var lat
 var lon 
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-"lat=" + lat + "&lon=" + lon + APIKey;
+"lat=43.761539&lon=-79.411079" + APIKey;
 
 $.ajax({
     url: queryURL,
