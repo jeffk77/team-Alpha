@@ -14,5 +14,8 @@ $.ajax({
         console.log(queryURL);
         console.log(response);
 
-
+        //Transfering content to HTML
+        $(".").html("<h1>" + response + "</h1>");
+        //Logging the data in the console
+        console.log
     })
