@@ -1,43 +1,7 @@
-/* FONT CODING */
-h1, .card-title {
-    font-size: 2em;
-}
-h2 {
-    font-size: 1.75em;
-}
-h3 {
-    font-size: 1.5em;
-}
-h4, .card-text {
-    font-size: 1.25em;
-}
-h5 {
+/* font-family: 'Roboto', sans-serif; */
+
+
+p {
+    font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
-h6 {
-    font-size: 0.75em;
-}
-p, li {
-    font-size: 1.25em;
-}
-
-/* GLOBAL ELEMENT CODING */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    height: 100%;
-}
-
-/* HEADER SECTION CODING */
-
-
-/* MAIN CONTENT CODING */
-#map {
-    height: 100%;
-}
-
-/* FOOTER CONTENT CODING */
