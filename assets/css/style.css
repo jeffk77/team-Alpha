@@ -38,7 +38,6 @@ html, body {
 /* MAIN CONTENT CODING */
 #map {
     height: 100%;
-    position: fixed;
 }
 
 /* FOOTER CONTENT CODING */
