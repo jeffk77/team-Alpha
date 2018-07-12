@@ -1,8 +1,10 @@
 //API key for weather
 var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
+var lat
+var lon 
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-"q=Toronto,Canada&units=imperial&appid=" + APIKey;
+"lat=" + lat + "&lon=" + lon + APIKey;
 
 $.ajax({
     url: queryURL,
