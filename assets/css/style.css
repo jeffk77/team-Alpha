@@ -22,12 +22,22 @@ p, li {
 }
 
 /* GLOBAL ELEMENT CODING */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+.container {
+    height: 100%;
+}
 
 /* HEADER SECTION CODING */
 
 
 /* MAIN CONTENT CODING */
-
+#map {
+    height: 100%;
+}
 
 /* FOOTER CONTENT CODING */
