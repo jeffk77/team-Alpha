@@ -5,3 +5,10 @@ p {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
+.row .col {
+    padding: 0;
+}
+
+.tabs-content {
+    height: 796px;
+}

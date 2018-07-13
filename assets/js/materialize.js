@@ -12378,16 +12378,5 @@ $jscomp.polyfill = function (e, r, p, m) {
   Range.init($('input[type=range]'));
 })(cash, M.anime);
 
-document.addEventListener('DOMContentLoaded', function () {
-  //var elems = document.querySelectorAll('.collapsible');
-  //var instances = M.Collapsible.init(elems, options);
-  var elem = document.querySelector('.collapsible');
-  var instance = M.Collapsible.init(elem, {
-    accordion: true
-  });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems);
-});
+

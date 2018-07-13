@@ -25,14 +25,14 @@ var grungy = {
 
 var clean = {
     cafe: {
-        0: { name: "Café Pamenar", hours: "8:00pm-2:30pm", reviews: "4.4/5", image: "https://via.placeholder.com/150x150", coordinates: {lat: 43.656668, lng: -79.402650} },
-        1: { name: "Creeds", hours: "8:00pm-2:30pm", reviews: "4.4/5", image: "https://via.placeholder.com/150x150", coordinates: {lat: 43.674326, lng: -79.410960} },
-        2: { name: "Quantum Coffee", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: {lat: 43.645567, lng: -79.395415} }
+        0: { name: "Café Pamenar", hours: "8:00pm-2:30pm", reviews: "4.4/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.656668, lng: -79.402650 } },
+        1: { name: "Creeds", hours: "8:00pm-2:30pm", reviews: "4.4/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.674326, lng: -79.410960 } },
+        2: { name: "Quantum Coffee", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.645567, lng: -79.395415 } }
     },
     movie: {
-        0: { name: "Scotiabank Theatre", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: {lat: 43.648925, lng: -79.391233} },
-        1: { name: "Hot Docs Ted Rogers Cinema", hours: "8:00pm-2:30pm", reviews: "4.6/5", image: "https://via.placeholder.com/150x150", coordinates: {lat: 43.665571, lng: -79.410474} },
-        2: { name: "TIFF Bell Lightbox", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: {lat: 43.645567, lng: -79.395415} }
+        0: { name: "Scotiabank Theatre", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.648925, lng: -79.391233 } },
+        1: { name: "Hot Docs Ted Rogers Cinema", hours: "8:00pm-2:30pm", reviews: "4.6/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.665571, lng: -79.410474 } },
+        2: { name: "TIFF Bell Lightbox", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.645567, lng: -79.395415 } }
     }
 }
 
@@ -83,16 +83,16 @@ function initMap() {
 //API key for weather
 var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
 var lat
-var lon 
+var lon
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-"lat=" + lat + "&lon=" + lon + APIKey;
+    "lat=" + lat + "&lon=" + lon + APIKey;
 
 $.ajax({
     url: queryURL,
     method: "GET"
 })
-    .then(function(response) {
+    .then(function (response) {
         console.log(queryURL);
         console.log(response);
 
@@ -101,3 +101,27 @@ $.ajax({
         //Logging the data in the console
         console.log
     })
+
+// materialize code
+
+document.addEventListener('DOMContentLoaded', function () {
+    //var elems = document.querySelectorAll('.collapsible');
+    //var instances = M.Collapsible.init(elems, options);
+    var elem = document.querySelector('.collapsible');
+    var instance = M.Collapsible.init(elem, {
+        accordion: true
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+});
+
+var options = {
+    swipeable: true,
+}
+
+var el = document.querySelector('.tabs');
+console.log(el);
+var instance = M.Tabs.init(el, options);
