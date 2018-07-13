@@ -21,32 +21,8 @@
                 <li>
                     <div class="collapsible-header">
                         <i class="material-icons">filter_1</i>Grungy Bars</div>
-                    <div class="collapsible-body">
+                    <div class="collapsible-body" id="grungy-bars">
                         <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
                     </div>
                 </li>
                 <li>
@@ -87,13 +63,16 @@
         </div>
 
         <div class="col s12 m8 l8">
-            <div class="image">
-                <img src="images/GoogleMap.jpg">
+            <div class="image" id="map">
             </div>
         </div>
 
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E&callback=initMap">
+        </script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
