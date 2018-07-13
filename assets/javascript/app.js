@@ -101,8 +101,7 @@ $.ajax({
         //function for unit conversion
         function tempConverter (valNum) {
             valNum = parseFloat(valNum);
-            document.getElementById("temperature").innerHTML = (valNum - 273.15) 
-            Math.round(valNum);      
+            document.getElementById("temperature").innerHTML = Math.round(valNum - 273.15)     
         }
 
         console.log(tempConverter(response.main.temp));
@@ -113,7 +112,7 @@ $.ajax({
 
         //if temperature is below -30 C
         if (response.main.temp < -20) {
-            $("p").html("abab");
+            $("p").html("My nipples can cut glass. Put on a coat!");
         }
 
         //if temperature is below 0 C
@@ -127,8 +126,13 @@ $.ajax({
         }
 
         //if temperature is below 20 C
-        if (10 <= response.temp < 20) {
+        if (10 <= response.main.temp < 20) {
             $("p").html("fers");
+        }
+
+        //if temperature is above 20 C
+        if (20 <= response.main.temp) {
+            $("p").html("kkkk");
         }
 
     });
