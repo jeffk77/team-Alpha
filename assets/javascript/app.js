@@ -82,8 +82,6 @@ function initMap() {
 
 //API key for weather
 var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
-var lat
-var lon 
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
 "lat=43.761539&lon=-79.411079" + APIKey;
@@ -96,8 +94,41 @@ $.ajax({
         console.log(queryURL);
         console.log(response);
 
-        //Transfering content to HTML
-        $(".").html("<h1>" + response + "</h1>");
+        
+        //Transfering temperature value to HTML
+        $("#temperature").html("<h2>" + response.main.temp + "</h2>");
+        
+        //function for unit conversion
+        function tempConverter (valNum) {
+            valNum = parseFloat(valNum);
+            document.getElementById("temperature").innerHTML = (valNum - 273.15) 
+            Math.round(valNum);      
+        }
+
+        console.log(tempConverter(response.main.temp));
+        
+
         //Logging the data in the console
-        console.log
-    })
+        console.log(response.main.temp);
+
+        //if temperature is below -30 C
+        if (response.main.temp < -20) {
+            $("p").html("abab");
+        }
+
+        //if temperature is below 0 C
+        if (-20 <= response.main.temp < 0) {
+            $("p").html("d");
+        }
+
+        //if temperature is below 10 C
+        if (0 <= response.main.temp < 10) {
+            $("p").html("dddd");
+        }
+
+        //if temperature is below 20 C
+        if (10 <= response.temp < 20) {
+            $("p").html("fers");
+        }
+
+    });
