@@ -77,19 +77,26 @@ function initMap() {
     marker = new google.maps.Marker({ position: lcn, map: map })
 
     var request = {
-        query: 'Museum of Contemporary Art Australia',
+        query: 'Quantum Coffee',
         fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
     }
-
+    
     service = new google.maps.places.PlacesService(map)
     service.findPlaceFromQuery(request, callback);
 
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                createMarker(results[i]);
-            }
+            let i = 0
+            let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
+            console.log(results[i]);
+            console.log(results[i].name);
+            let name = $(`<h4 class="name">`).html(results[i].name);
+            let hours = $(`<p class="hours">`).html(results[i].opening_hours.open_now);
+            let reviews = $(`<p class="reviews">`).html(results[i].rating);
+            // let image = $(`<img src="${results.candidates.photos.}" style="float: left">`);
+            $(selection).append(name, hours, reviews);
+            console.log(selection);
+            $("#grungy-bars").append(selection);
         }
     };
 };
