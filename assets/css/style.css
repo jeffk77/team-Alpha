@@ -12,3 +12,33 @@ p {
 .tabs-content {
     height: 796px;
 }
+.modal {
+    width: fit-content;
+    height: fit-content;
+}
+.modal-content {
+    text-align: center;
+}
+#sketchylogo {
+    padding: 20px;
+}
+#mainlogo {
+    padding: 30px;
+}
+form {
+    padding: 20px;
+}
+.btn {
+    margin: 15px;
+}
+.page-footer {
+    background-color: rgb(223, 171, 2);
+}
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+footer col {
+    text-align: center;
+}
