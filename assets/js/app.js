@@ -26,28 +26,14 @@ var clean = [
     shopping = ["Eaton Centre", "Yorkville Village", "Manulife Centre"]
 ];
 
-//Dynamically curating the list depending on the selection
-// for (i = 0; i < Object.keys(grungy).length; i++) {
-//     let count = i.toString();
-//     let choice = grungy[count];
-//     let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
-//     let name = $(`<h4 class="name">`).html(choice.name);
-//     let hours = $(`<p class="hours">`).html(choice.hours);
-//     let reviews = $(`<p class="reviews">`).html(choice.reviews);
-//     let image = $(`<img src="${choice.image}" style="float: left">`);
-//     $(selection).append(image, name, hours, reviews);
-//     console.log(selection);
-//     $("#grungy-bars").append(selection);
-// }
-
 //Google Maps
-//Changes the Google Map and marker to the new location
-// $(".selection").on("click", function () {
-//     lcn = places[$(this).val()];
-//     console.log(lcn);
-//     map.panTo(lcn);
-//     marker.setPosition(lcn);
-// });
+// Changes the Google Map and marker to the new location
+$(".selection").on("click", function () {
+    lcn = places[$(this).val()];
+    console.log(lcn);
+    map.panTo(lcn);
+    marker.setPosition(lcn);
+});
 
 //Google Maps - only initialized once
 function initMap() {
@@ -73,8 +59,20 @@ function initMap() {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
                     console.log(results[0]);
+                    // console.log(results[0].geometry.location);
+                    // let a = results[0].geometry.location.lat;
+                    // let b = results[0].geometry.location.lng;
+                    // let lcn = {lat: a, lng: b}
+                    let lcn = results[0].geometry.location
+                    selection.attr("coordinates", lcn);
                     let name = $(`<h5 class="name">`).html(results[0].name);
-                    let hours = $(`<p class="hours">`).html(results[0].opening_hours.open_now);
+                    if (!results[0].opening_hours) {
+                        var hours = $(`<p class="hours">`).html(`No idea`)
+                    } else if (results[0].opening_hours.open_now === true) {
+                        var hours = $(`<p class="hours">`).html(`Everybody get in here!`)
+                    } else {
+                        var hours = $(`<p class="hours">`).html(`You missed out!`)
+                    }
                     let reviews = $(`<p class="reviews">`).html(results[0].rating);
                     let image = $(`<img src="https://via.placeholder.com/100x100" style="float: left">`);
                     $(selection).append(image, name, hours, reviews);
@@ -87,41 +85,7 @@ function initMap() {
     };
 };
 
-    // googleSearch()
-    // //API key for Google Searches
-    // function googleSearch() {
-    //     console.log("inside")
-    //     for (i = 0; i < Object.keys(clean.cafe).length; i++) {
-    //         console.log(Object.keys(clean.cafe).length);
-    //         console.log(clean.cafe[i].name)
-    //         let search = clean.cafe[i].name;
-    //         let queryURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${search}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E`;
-
-    //         $.ajax({
-    //             crossOrigin: true,
-    //             url: queryURL,
-    //             method: "GET",
-    //             dataType: 'json',
-    //             cache: false,
-    //             success: function (response) {
-    //                 alert(response);
-    //             }
-    //         }).then(function (snapshot) {
-    //             let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
-    //             console.log(snapshot.candidates);
-    //             console.log(snapshot.candidates.name);
-    //             let name = $(`<h4 class="name">`).html(snapshot.candidates.name);
-    //             let hours = $(`<p class="hours">`).html(snapshot.candidates.opening_hours.open_now);
-    //             let reviews = $(`<p class="reviews">`).html(snapshot.candidates.rating);
-    //             // let image = $(`<img src="${snapshot.candidates.photos.}" style="float: left">`);
-    //             $(selection).append(name, hours, reviews);
-    //             console.log(selection);
-    //             $("#grungy-bars").append(selection);
-    //         })
-    //     }
-    // };
-
-//API key for weather
+// //API key for weather
 // var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
 // var lat
 // var lon
@@ -142,3 +106,27 @@ function initMap() {
 //         //Logging the data in the console
 //         console.log
 //     })
+
+// // materialize code
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     //var elems = document.querySelectorAll('.collapsible');
+//     //var instances = M.Collapsible.init(elems, options);
+//     var elem = document.querySelector('.collapsible');
+//     var instance = M.Collapsible.init(elem, {
+//         accordion: true
+//     });
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.modal');
+//     var instances = M.Modal.init(elems);
+// });
+
+// var options = {
+//     swipeable: true,
+// }
+
+// var el = document.querySelector('.tabs');
+// console.log(el);
+// var instance = M.Tabs.init(el, options);

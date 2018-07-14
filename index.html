@@ -7,12 +7,14 @@
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
-      <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
+    <!-- Import Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!--Let browser know website is optimized for mobile-->
@@ -25,19 +27,51 @@
 
         <div class="col s12 m4 l4">
 
-        </div>
+            <nav class="nav-extended">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">
+                        Sketchy Results
+                        <!--This could be a name-->
+                    </a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                </div>
+                <div class="nav-content">
+                    <ul id="tabs-swipe-demo" class="tabs">
+                        <li class="tab col s3">
+                            <a class="active" href="#test-swipe-1">Cafe</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#test-swipe-2">Movies</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#test-swipe-3">Dessert</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#test-swipe-4">Shopping</a>
+                        </li>
+                    </ul>
+                    <div id="test-swipe-1" class="col s12 blue">Test 1</div>
+                    <div id="test-swipe-2" class="col s12 red">Test 2</div>
+                    <div id="test-swipe-3" class="col s12 green">Test 3</div>
+                    <div id="test-swipe-4" class="col s12 orange">Test 4</div>
+            </nav>
 
-        <div class="col s12 m8 l8">
-            <div class="image">
-                <img src="images/GoogleMap.jpg">
             </div>
-        </div>
 
-    <!-- Javascript Linking -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E&callback=initMap">
-    </script>
+            <div class="col s12 m8 l8">
+                <div class="image">
+                    <img src="assets/images/GoogleMap.jpg">
+                </div>
+            </div>
+
+            <!-- Javascript Linking -->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script type="text/javascript" src="assets/js/materialize.js"></script>
+            <script src="assets/js/app.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E&callback=initMap">
+            </script>
 
 </body>
 
