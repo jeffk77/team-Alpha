@@ -122,7 +122,7 @@ $.ajax({
 
         //if temperature is below 10 C
         if (0 <= response.main.temp < 10) {
-            $("p").html("Well it's official. The weather has been diagnosed with bipolar disorder!");
+            $("p").html("Sweater Weather isn't just a song, bitch");
         }
 
         //if temperature is below 20 C
