@@ -12,24 +12,44 @@ var map,
 var lcn = { lat: 43.653908, lng: -79.384293 };
 
 //Selections Variables
-var grungy = {
-    0: { name: "Bar244", hours: "8:00pm-2:30pm", reviews: "3.1/5", image: "https://via.placeholder.com/150x150" },
-    1: { name: "3 Brewers", hours: "8:00pm-2:30pm", reviews: "3.1/5", image: "https://via.placeholder.com/150x150" },
-    2: { name: "The Madison", hours: "8:00pm-2:30pm", reviews: "3.1/5", image: "https://via.placeholder.com/150x150" },
-    3: { name: "The Fifth", hours: "8:00pm-2:30pm", reviews: "3.1/5", image: "https://via.placeholder.com/150x150" }
-};
-
 var clean = [
     cafe = ["Café Pamenar", "Creeds Coffee Bar", "Quantum Coffee"],
-    movie = ["Scotiabank Theatre Toronto", "Hot Docs Ted Rogers Cinema", "TIFF Bell Lightbox"],
     dessert = ["Fuwa Fuwa", "Future Bistro", "Put A Cone On It"],
+    movie = ["Scotiabank Theatre Toronto", "Hot Docs Ted Rogers Cinema", "TIFF Bell Lightbox"],
     shopping = ["Eaton Centre", "Yorkville Village", "Manulife Centre"]
+];
+
+var classy = [
+    bar = ["Speakeasy 21", "King Taps", "Drake One Fifty"],
+    boardGames = ["Snakes & Lattes", "401 Games", "Bampot Bohemian House"],
+    restaurant = ["The Chase Fish and Oyster", "Estiatorio Volos", "Kasa Moto"],
+    theatre = ["Tarragon", "Soulpepper", "CanStage"]
+];
+
+var buzzin = [
+    comedyClub = ["Comedy Bar", "The Second City Theater Toronto", "Yuk Yuk’s Comedy Club Toronto"],
+    escapeRooms = ["Mysterious Minds Escape Rooms", "Captive Escape Rooms Downtown Toronto", "Roundabout Canada"],
+    pub = ["Real Sports Bar", "The Dock Ellis", "Hurricanes Roadhouse Restaurant"],
+];
+
+var trashed = [
+    burlesqueClub = ["Painted Lady", "Revival", "Round Venue"],
+    casino = ["Canadian National Exhibition", "Fallsview Casino", "Casino Rama"],
+    club = ["Rebel Toronto", "El Convento Rico Nightclub", "The Fifth Social Club"],
+    dragBar = ["Buddies in Bad Times", "Crews and Tangos", "Woody’s and Sailor"]
+];
+
+var fucked = [
+    drugs = ["The Toronto Dispensary", "Cloud 6ix", "Zen Zoo"],
+    shisha = ["Shisha&Co", "Ali Baba Café and Restaurant", "King Shisha Lounge"],
+    stripClub = ["Brass Rail", "House of Lancaster Two", "Remingtons Men of Steel"],
+    toyStore = ["Stag Shop", "Seduction", "Northbound Leather"]
 ];
 
 //Google Maps
 // Changes the Google Map and marker to the new location
-$(".selection").on("click", function () {
-    lcn = places[$(this).val()];
+$("#selection").on("click", ".selection", function () {
+    lcn = JSON.parse($(this).attr("coordinates"));
     console.log(lcn);
     map.panTo(lcn);
     marker.setPosition(lcn);
@@ -44,11 +64,11 @@ function initMap() {
     });
     marker = new google.maps.Marker({ position: lcn, map: map })
 
-    for (var cat = 0; cat < Object.keys(clean).length; cat++) {
-        for (var count = 0; count < Object.keys(clean[cat]).length; count++) {
-            console.log(clean[cat][count]);
+    for (var cat = 0; cat < Object.keys(fucked).length; cat++) {
+        for (var count = 0; count < Object.keys(fucked[cat]).length; count++) {
+            console.log(fucked[cat][count]);
             var request = {
-                query: clean[cat][count],
+                query: fucked[cat][count],
                 fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
             }
 
@@ -59,12 +79,10 @@ function initMap() {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
                     console.log(results[0]);
-                    // console.log(results[0].geometry.location);
-                    // let a = results[0].geometry.location.lat;
-                    // let b = results[0].geometry.location.lng;
-                    // let lcn = {lat: a, lng: b}
-                    let lcn = results[0].geometry.location
-                    selection.attr("coordinates", lcn);
+                    let a = parseFloat(results[0].geometry.location.lat());
+                    let b = parseFloat(results[0].geometry.location.lng());
+                    let latlng = { lat: a, lng: b }
+                    selection.attr("coordinates", JSON.stringify(latlng));
                     let name = $(`<h5 class="name">`).html(results[0].name);
                     if (!results[0].opening_hours) {
                         var hours = $(`<p class="hours">`).html(`No idea`)
@@ -76,7 +94,7 @@ function initMap() {
                     let reviews = $(`<p class="reviews">`).html(results[0].rating);
                     let image = $(`<img src="https://via.placeholder.com/100x100" style="float: left">`);
                     $(selection).append(image, name, hours, reviews);
-                    $("#grungy-bars").append(selection);
+                    $("#selection").append(selection);
                 } else {
                     console.log("Error");
                 }
