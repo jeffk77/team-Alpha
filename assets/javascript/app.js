@@ -6,10 +6,6 @@ var places = {
     harbourfrontCenter: { lat: 43.638927, lng: -79.381906 }
 };
 
-var grungy = {
-    bar244: { name: "bar244", hours: "8:00pm-2:30pm", reviews: "3.1/5", image: "https://scontent.fyyz1-1.fna.fbcdn.net/v/t1.0-9/14184538_1394835640531005_3775698912336605768_n.jpg?_nc_fx=fyyz1-1&_nc_cat=0&oh=929be449c7011a400ea2e9ee56e1d66d&oe=5BEC78FA" }
-}
-
 var map,
     marker;
 
@@ -23,26 +19,12 @@ var grungy = {
     3: { name: "The Fifth", hours: "8:00pm-2:30pm", reviews: "3.1/5", image: "https://via.placeholder.com/150x150" }
 };
 
-// var clean = {
-//     cafe: {
-//         0: { name: "Café Pamenar", hours: "8:00pm-2:30pm", reviews: "4.4/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.656668, lng: -79.402650 } },
-//         1: { name: "Creeds", hours: "8:00pm-2:30pm", reviews: "4.4/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.674326, lng: -79.410960 } },
-//         2: { name: "Quantum Coffee", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.645567, lng: -79.395415 } }
-//     },
-//     movie: {
-//         0: { name: "Scotiabank Theatre", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.648925, lng: -79.391233 } },
-//         1: { name: "Hot Docs Ted Rogers Cinema", hours: "8:00pm-2:30pm", reviews: "4.6/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.665571, lng: -79.410474 } },
-//         2: { name: "TIFF Bell Lightbox", hours: "8:00pm-2:30pm", reviews: "4.3/5", image: "https://via.placeholder.com/150x150", coordinates: { lat: 43.645567, lng: -79.395415 } }
-//     }
-// }
-
-var clean = {
-    cafe: {
-        0: { name: "Café Pamenar" },
-        1: { name: "Creeds" },
-        2: { name: "Quantum Coffee" },
-    }
-}
+var clean = [
+    cafe = ["Café Pamenar", "Creeds Coffee Bar", "Quantum Coffee"],
+    movie = ["Scotiabank Theatre Toronto", "Hot Docs Ted Rogers Cinema", "TIFF Bell Lightbox"],
+    dessert = ["Fuwa Fuwa", "Future Bistro", "Put A Cone On It"],
+    shopping = ["Eaton Centre", "Yorkville Village", "Manulife Centre"]
+];
 
 //Dynamically curating the list depending on the selection
 // for (i = 0; i < Object.keys(grungy).length; i++) {
@@ -76,28 +58,32 @@ function initMap() {
     });
     marker = new google.maps.Marker({ position: lcn, map: map })
 
-    var request = {
-        query: 'Quantum Coffee',
-        fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
-    }
-    
-    service = new google.maps.places.PlacesService(map)
-    service.findPlaceFromQuery(request, callback);
+    for (var cat = 0; cat < Object.keys(clean).length; cat++) {
+        for (var count = 0; count < Object.keys(clean[cat]).length; count++) {
+            console.log(clean[cat][count]);
+            var request = {
+                query: clean[cat][count],
+                fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
+            }
 
-    function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            let i = 0
-            let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
-            console.log(results[i]);
-            console.log(results[i].name);
-            let name = $(`<h4 class="name">`).html(results[i].name);
-            let hours = $(`<p class="hours">`).html(results[i].opening_hours.open_now);
-            let reviews = $(`<p class="reviews">`).html(results[i].rating);
-            // let image = $(`<img src="${results.candidates.photos.}" style="float: left">`);
-            $(selection).append(name, hours, reviews);
-            console.log(selection);
-            $("#grungy-bars").append(selection);
-        }
+            service = new google.maps.places.PlacesService(map)
+            service.findPlaceFromQuery(request, callback);
+
+            function callback(results, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
+                    console.log(results[0]);
+                    let name = $(`<h5 class="name">`).html(results[0].name);
+                    let hours = $(`<p class="hours">`).html(results[0].opening_hours.open_now);
+                    let reviews = $(`<p class="reviews">`).html(results[0].rating);
+                    let image = $(`<img src="https://via.placeholder.com/100x100" style="float: left">`);
+                    $(selection).append(image, name, hours, reviews);
+                    $("#grungy-bars").append(selection);
+                } else {
+                    console.log("Error");
+                }
+            };
+        };
     };
 };
 
