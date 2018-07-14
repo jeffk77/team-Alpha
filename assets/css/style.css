@@ -42,3 +42,13 @@ footer {
 footer col {
     text-align: center;
 }
+
+#map {
+    height: 100vh;
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
