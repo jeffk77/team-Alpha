@@ -23,55 +23,138 @@
 
 <body>
 
-    <div class="row">
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <h4>Welcome to Sketchy... Introduce yourself!</h4>
+                <h6>Warning... you must be at least 19 years of age to ride THIS ride...</h6>
 
-        <div class="col s12 m4 l4">
+                <form class="container">
+                    <div class="form-group">
+                        <label for="name-input">What's your name?</label>
+                        <input class="form-control" id="name-input" type="text">
+                    </div>
 
-            <nav class="nav-extended">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">
-                        Sketchy Results
-                        <!--This could be a name-->
-                    </a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                        <i class="material-icons">menu</i>
-                    </a>
-                </div>
-                <div class="nav-content">
-                    <ul id="tabs-swipe-demo" class="tabs">
-                        <li class="tab col s3">
-                            <a class="active" href="#test-swipe-1">Cafe</a>
-                        </li>
-                        <li class="tab col s3">
-                            <a href="#test-swipe-2">Movies</a>
-                        </li>
-                        <li class="tab col s3">
-                            <a href="#test-swipe-3">Dessert</a>
-                        </li>
-                        <li class="tab col s3">
-                            <a href="#test-swipe-4">Shopping</a>
-                        </li>
-                    </ul>
-                    <div id="test-swipe-1" class="col s12 blue">Test 1</div>
-                    <div id="test-swipe-2" class="col s12 red">Test 2</div>
-                    <div id="test-swipe-3" class="col s12 green">Test 3</div>
-                    <div id="test-swipe-4" class="col s12 orange">Test 4</div>
-            </nav>
+                    <div class="form-group">
+                        <label for="age-input">How old are you?</label>
+                        <input class="form-control" id="age-input" type="text">
+                    </div>
+
+                    <button class="btn btn-dark" id="adduser" type="submit">Submit</button>
+                </form>
 
             </div>
+        </div>
+    </div>
 
-            <div class="col s12 m8 l8">
-                <div class="image">
-                    <img src="assets/images/GoogleMap.jpg">
+    <div class="container">
+        <img class="responsive-img" src="assets/images/sketchlogo.png" id="mainlogo">
+        <div class="row">
+            <h2>What kind of trouble are you looking for?</h2>
+
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/sketchlogo.png">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Javascript Linking -->
-            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script type="text/javascript" src="assets/js/materialize.js"></script>
-            <script src="assets/js/app.js"></script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E&callback=initMap">
-            </script>
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/sketchlogo.png">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/sketchlogo.png">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/sketchlogo.png">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/sketchlogo.png">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Search for some trouble, mothafuckaaaaaaahhhh!!!!!</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
+    <!-- Javascript Linking -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/materialize.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E&callback=initMap">
+    </script>
 
 </body>
 

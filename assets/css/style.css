@@ -5,7 +5,6 @@ p {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
-
 .row .col {
     padding: 0;
 }
@@ -13,13 +12,33 @@ p {
 .tabs-content {
     height: 796px;
 }
-
-#map {
-    height: 100vh;
+.modal {
+    width: fit-content;
+    height: fit-content;
 }
-
-html, body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+.modal-content {
+    text-align: center;
+}
+#sketchylogo {
+    padding: 20px;
+}
+#mainlogo {
+    padding: 30px;
+}
+form {
+    padding: 20px;
+}
+.btn {
+    margin: 15px;
+}
+.page-footer {
+    background-color: rgb(223, 171, 2);
+}
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+footer col {
+    text-align: center;
 }
