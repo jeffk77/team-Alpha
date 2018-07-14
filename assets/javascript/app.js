@@ -110,29 +110,29 @@ $.ajax({
         //Logging the data in the console
         console.log(response.main.temp);
 
-        //if temperature is below -30 C
+        //if temperature is below -20 C
         if (response.main.temp < -20) {
-            $("p").html("My nipples can cut glass. Put on a coat!");
+            $("p").html("I'm not going outside until the temperature is above my age!");
         }
 
         //if temperature is below 0 C
         if (-20 <= response.main.temp < 0) {
-            $("p").html("d");
+            $("p").html("My nipples can cut glass. Put on a coat!");
         }
 
         //if temperature is below 10 C
         if (0 <= response.main.temp < 10) {
-            $("p").html("dddd");
+            $("p").html("Well it's official. The weather has been diagnosed with bipolar disorder!");
         }
 
         //if temperature is below 20 C
         if (10 <= response.main.temp < 20) {
-            $("p").html("fers");
+            $("p").html("Finally my winter fat is gone. Now I have spring rolls.");
         }
 
         //if temperature is above 20 C
         if (20 <= response.main.temp) {
-            $("p").html("kkkk");
+            $("p").html("Today is National F**king Hate Florida Day");
         }
 
     });
