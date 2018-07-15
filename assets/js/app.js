@@ -46,7 +46,7 @@ var fucked = [
     toyStore = ["Stag Shop", "Seduction", "Northbound Leather"]
 ];
 
-//Google Maps
+//Google Maps Marker
 // Changes the Google Map and marker to the new location
 $("#selection").on("click", ".selection", function () {
     lcn = JSON.parse($(this).attr("coordinates"));
@@ -55,20 +55,20 @@ $("#selection").on("click", ".selection", function () {
     marker.setPosition(lcn);
 });
 
-//Google Maps - only initialized once
+//Google Maps
 function initMap() {
-    console.log("inside " + JSON.stringify(lcn));
     map = new google.maps.Map(document.getElementById('map'), {
         center: lcn,
         zoom: 14
     });
     marker = new google.maps.Marker({ position: lcn, map: map })
 
-    for (var cat = 0; cat < Object.keys(fucked).length; cat++) {
-        for (var count = 0; count < Object.keys(fucked[cat]).length; count++) {
-            console.log(fucked[cat][count]);
+    //Dynamically populating the category sections depending on user selection
+    for (var cat = 0; cat < Object.keys(clean).length; cat++) {
+        for (var count = 0; count < Object.keys(clean[cat]).length; count++) {
+            console.log(clean[cat][count]);
             var request = {
-                query: fucked[cat][count],
+                query: clean[cat][count],
                 fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
             }
 
@@ -79,11 +79,13 @@ function initMap() {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
                     console.log(results[0]);
+                    //Obtaining the location coordinates of the place
                     let a = parseFloat(results[0].geometry.location.lat());
                     let b = parseFloat(results[0].geometry.location.lng());
                     let latlng = { lat: a, lng: b }
                     selection.attr("coordinates", JSON.stringify(latlng));
                     let name = $(`<h5 class="name">`).html(results[0].name);
+                    //Comparing if location is open or not
                     if (!results[0].opening_hours) {
                         var hours = $(`<p class="hours">`).html(`No idea`)
                     } else if (results[0].opening_hours.open_now === true) {
@@ -96,6 +98,7 @@ function initMap() {
                     $(selection).append(image, name, hours, reviews);
                     $("#selection").append(selection);
                 } else {
+                    console.log(google.maps.places);
                     console.log("Error");
                 }
             };
