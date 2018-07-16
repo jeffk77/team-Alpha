@@ -1,22 +1,97 @@
+// Setting up Firebase, and accepting name, age and filter choices.
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBk2Z_Okdf-285-eGYKl1ajGChrl29JwmI",
+    authDomain: "sketchy-app-ab6a6.firebaseapp.com",
+    databaseURL: "https://sketchy-app-ab6a6.firebaseio.com",
+    projectId: "sketchy-app-ab6a6",
+    storageBucket: "sketchy-app-ab6a6.appspot.com",
+    messagingSenderId: "735630482621"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+$(document).ready(function () {
+    $('#modal').modal();
+    $('#modal').modal('open');
+});
+
+// Function to accept new user entries, into input variables. Accepting values on "click".
+$("#adduser").on("click", function (event) {
+    event.preventDefault();
+
+    var userName = $("#name-input").val().trim();
+    var userAge = $("#age-input").val().trim();
+
+    var newUser = {
+        name: userName,
+        age: userAge,
+    };
+
+    // Pushing values to Firebase.
+    database.ref().push(newUser);
+
+    $("#name-input").val("");
+    $("#age-input").val("");
+});
+
 //Google Maps Variables
 var places = {
-    toronto: { lat: 43.653908, lng: -79.384293 },
-    oise: { lat: 43.668117, lng: -79.398363 },
-    eatonCenter: { lat: 43.654828, lng: -79.380703 },
-    harbourfrontCenter: { lat: 43.638927, lng: -79.381906 }
+    toronto: {
+        lat: 43.653908,
+        lng: -79.384293
+    },
+    oise: {
+        lat: 43.668117,
+        lng: -79.398363
+    },
+    eatonCenter: {
+        lat: 43.654828,
+        lng: -79.380703
+    },
+    harbourfrontCenter: {
+        lat: 43.638927,
+        lng: -79.381906
+    }
 };
+
+var grungy = {
+    bar244: {
+        name: "bar244",
+        hours: "8:00pm-2:30pm",
+        reviews: "3.1/5",
+        image: "https://scontent.fyyz1-1.fna.fbcdn.net/v/t1.0-9/14184538_1394835640531005_3775698912336605768_n.jpg?_nc_fx=fyyz1-1&_nc_cat=0&oh=929be449c7011a400ea2e9ee56e1d66d&oe=5BEC78FA"
+    }
+}
 
 var map,
     marker;
 
-var lcn = { lat: 43.653908, lng: -79.384293 };
+var lcn = {
+    lat: 43.653908,
+    lng: -79.384293
+};
 
 //Selections Variables
+var sections = ["", "", "", "#test-swipe-1", "#test-swipe-1", "#test-swipe-1", "#test-swipe-2", "#test-swipe-2", "#test-swipe-2", "#test-swipe-3", "#test-swipe-3", "#test-swipe-3", "#test-swipe-4", "#test-swipe-4", "#test-swipe-4"];
+
+var selection = "";
+
+var choices = {
+    clean: ["cafe", "desert", "movie", "shopping"],
+    classy: ["bar", "board games", "restaurant", "theatre"],
+    buzzin: ["comedy club", "escape rooms", "pub"],
+    trashed: ["burlesque club", "casino", "club", "drag bar"]
+};
+
 var clean = [
     cafe = ["Café Pamenar", "Creeds Coffee Bar", "Quantum Coffee"],
     dessert = ["Fuwa Fuwa", "Future Bistro", "Put A Cone On It"],
     movie = ["Scotiabank Theatre Toronto", "Hot Docs Ted Rogers Cinema", "TIFF Bell Lightbox"],
-    shopping = ["Eaton Centre", "Yorkville Village", "Manulife Centre"]
+    shopping = ["Eaton Centre", "Yorkdale Shopping Centre", "Fairview Mall"]
 ];
 
 var classy = [
@@ -46,9 +121,22 @@ var fucked = [
     toyStore = ["Stag Shop", "Seduction", "Northbound Leather"]
 ];
 
+//Obtaining selection
+$("a").on("click", function () {
+    return selection = $(this).attr("value")
+});
+
+function contentHeader() {
+    $("#swipe-1").html(choices[selection][0]);
+    $("#swipe-2").html(choices[selection][1]);
+    $("#swipe-3").html(choices[selection][2]);
+    $("#swipe-4").html(choices[selection][3]);
+    console.log("inside");
+};
+
 //Google Maps Marker
 // Changes the Google Map and marker to the new location
-$("#selection").on("click", ".selection", function () {
+$(".nav-content").on("click", ".selection", function () {
     lcn = JSON.parse($(this).attr("coordinates"));
     console.log(lcn);
     map.panTo(lcn);
@@ -66,7 +154,7 @@ function initMap() {
     //Dynamically populating the category sections depending on user selection
     for (var cat = 0; cat < Object.keys(clean).length; cat++) {
         for (var count = 0; count < Object.keys(clean[cat]).length; count++) {
-            console.log(clean[cat][count]);
+            var next = 0;
             var request = {
                 query: clean[cat][count],
                 fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
@@ -76,6 +164,7 @@ function initMap() {
             service.findPlaceFromQuery(request, callback);
 
             function callback(results, status) {
+                next++;
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
                     console.log(results[0]);
@@ -93,61 +182,62 @@ function initMap() {
                     } else {
                         var hours = $(`<p class="hours">`).html(`You missed out!`)
                     }
-                    let reviews = $(`<p class="reviews">`).html(results[0].rating);
+                    let reviews = $(`<p class="reviews">`).html(results[0].rating + "/5");
                     let image = $(`<img src="https://via.placeholder.com/100x100" style="float: left">`);
                     $(selection).append(image, name, hours, reviews);
-                    $("#selection").append(selection);
+                    $(sections[next]).append(selection);
+
                 } else {
                     console.log(google.maps.places);
                     console.log("Error");
                 }
-            };
+            }
         };
     };
 };
 
-// //API key for weather
-// var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
-// var lat
-// var lon
+//API key for weather
+var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
+var lat
+var lon
 
-// var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-//     "lat=" + lat + "&lon=" + lon + APIKey;
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+    "lat=" + lat + "&lon=" + lon + APIKey;
 
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// })
-//     .then(function (response) {
-//         console.log(queryURL);
-//         console.log(response);
+$.ajax({
+    url: queryURL,
+    method: "GET"
+})
+    .then(function (response) {
+        console.log(queryURL);
+        console.log(response);
 
-//         //Transfering content to HTML
-//         $(".").html("<h1>" + response + "</h1>");
-//         //Logging the data in the console
-//         console.log
-//     })
+        //Transfering content to HTML
+        $(".").html("<h1>" + response + "</h1>");
+        //Logging the data in the console
+        console.log
+    })
 
-// // materialize code
+// materialize code
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     //var elems = document.querySelectorAll('.collapsible');
-//     //var instances = M.Collapsible.init(elems, options);
-//     var elem = document.querySelector('.collapsible');
-//     var instance = M.Collapsible.init(elem, {
-//         accordion: true
-//     });
-// });
+document.addEventListener('DOMContentLoaded', function () {
+    //var elems = document.querySelectorAll('.collapsible');
+    //var instances = M.Collapsible.init(elems, options);
+    var elem = document.querySelector('.collapsible');
+    var instance = M.Collapsible.init(elem, {
+        accordion: true
+    });
+});
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     var elems = document.querySelectorAll('.modal');
-//     var instances = M.Modal.init(elems);
-// });
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+});
 
-// var options = {
-//     swipeable: true,
-// }
+var options = {
+    swipeable: true,
+}
 
-// var el = document.querySelector('.tabs');
-// console.log(el);
-// var instance = M.Tabs.init(el, options);
+var el = document.querySelector('.tabs');
+console.log(el);
+var instance = M.Tabs.init(el, options);

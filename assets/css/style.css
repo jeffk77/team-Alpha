@@ -5,13 +5,45 @@ p {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
-
 .row .col {
     padding: 0;
 }
 
 .tabs-content {
     height: 796px;
+}
+.modal {
+    width: fit-content;
+    height: fit-content;
+}
+.modal-content {
+    text-align: center;
+}
+#sketchylogo {
+    padding: 20px;
+}
+#mainlogo {
+    padding: 30px;
+}
+form {
+    padding: 20px;
+}
+.btn {
+    margin: 15px;
+}
+#content-body {
+    margin-bottom: 120px;
+}
+.page-footer {
+    background-color: rgb(223, 171, 2);
+}
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+footer col {
+    text-align: center;
 }
 
 #map {
