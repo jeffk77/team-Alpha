@@ -39,34 +39,6 @@ $("#adduser").on("click", function (event) {
 });
 
 //Google Maps Variables
-var places = {
-    toronto: {
-        lat: 43.653908,
-        lng: -79.384293
-    },
-    oise: {
-        lat: 43.668117,
-        lng: -79.398363
-    },
-    eatonCenter: {
-        lat: 43.654828,
-        lng: -79.380703
-    },
-    harbourfrontCenter: {
-        lat: 43.638927,
-        lng: -79.381906
-    }
-};
-
-var grungy = {
-    bar244: {
-        name: "bar244",
-        hours: "8:00pm-2:30pm",
-        reviews: "3.1/5",
-        image: "https://scontent.fyyz1-1.fna.fbcdn.net/v/t1.0-9/14184538_1394835640531005_3775698912336605768_n.jpg?_nc_fx=fyyz1-1&_nc_cat=0&oh=929be449c7011a400ea2e9ee56e1d66d&oe=5BEC78FA"
-    }
-}
-
 var map,
     marker;
 
