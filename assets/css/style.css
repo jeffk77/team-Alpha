@@ -31,6 +31,9 @@ form {
 .btn {
     margin: 15px;
 }
+#content-body {
+    margin-bottom: 120px;
+}
 .page-footer {
     background-color: rgb(223, 171, 2);
 }

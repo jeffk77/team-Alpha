@@ -76,145 +76,124 @@ var lcn = {
 };
 
 //Selections Variables
-var grungy = {
-    0: {
-        name: "Bar244",
-        hours: "8:00pm-2:30pm",
-        reviews: "3.1/5",
-        image: "https://via.placeholder.com/150x150"
-    },
-    1: {
-        name: "3 Brewers",
-        hours: "8:00pm-2:30pm",
-        reviews: "3.1/5",
-        image: "https://via.placeholder.com/150x150"
-    },
-    2: {
-        name: "The Madison",
-        hours: "8:00pm-2:30pm",
-        reviews: "3.1/5",
-        image: "https://via.placeholder.com/150x150"
-    },
-    3: {
-        name: "The Fifth",
-        hours: "8:00pm-2:30pm",
-        reviews: "3.1/5",
-        image: "https://via.placeholder.com/150x150"
-    }
+var sections = ["", "", "", "#test-swipe-1", "#test-swipe-1", "#test-swipe-1", "#test-swipe-2", "#test-swipe-2", "#test-swipe-2", "#test-swipe-3", "#test-swipe-3", "#test-swipe-3", "#test-swipe-4", "#test-swipe-4", "#test-swipe-4"];
+
+var selection = "";
+
+var choices = {
+    clean: ["cafe", "desert", "movie", "shopping"],
+    classy: ["bar", "board games", "restaurant", "theatre"],
+    buzzin: ["comedy club", "escape rooms", "pub"],
+    trashed: ["burlesque club", "casino", "club", "drag bar"]
 };
 
-var clean = {
-    cafe: {
-        0: {
-            name: "Café Pamenar",
-            hours: "8:00pm-2:30pm",
-            reviews: "4.4/5",
-            image: "https://via.placeholder.com/150x150",
-            coordinates: {
-                lat: 43.656668,
-                lng: -79.402650
-            }
-        },
-        1: {
-            name: "Creeds",
-            hours: "8:00pm-2:30pm",
-            reviews: "4.4/5",
-            image: "https://via.placeholder.com/150x150",
-            coordinates: {
-                lat: 43.674326,
-                lng: -79.410960
-            }
-        },
-        2: {
-            name: "Quantum Coffee",
-            hours: "8:00pm-2:30pm",
-            reviews: "4.3/5",
-            image: "https://via.placeholder.com/150x150",
-            coordinates: {
-                lat: 43.645567,
-                lng: -79.395415
-            }
-        }
-    },
-    movie: {
-        0: {
-            name: "Scotiabank Theatre",
-            hours: "8:00pm-2:30pm",
-            reviews: "4.3/5",
-            image: "https://via.placeholder.com/150x150",
-            coordinates: {
-                lat: 43.648925,
-                lng: -79.391233
-            }
-        },
-        1: {
-            name: "Hot Docs Ted Rogers Cinema",
-            hours: "8:00pm-2:30pm",
-            reviews: "4.6/5",
-            image: "https://via.placeholder.com/150x150",
-            coordinates: {
-                lat: 43.665571,
-                lng: -79.410474
-            }
-        },
-        2: {
-            name: "TIFF Bell Lightbox",
-            hours: "8:00pm-2:30pm",
-            reviews: "4.3/5",
-            image: "https://via.placeholder.com/150x150",
-            coordinates: {
-                lat: 43.645567,
-                lng: -79.395415
-            }
-        }
-    }
-}
+var clean = [
+    cafe = ["Café Pamenar", "Creeds Coffee Bar", "Quantum Coffee"],
+    dessert = ["Fuwa Fuwa", "Future Bistro", "Put A Cone On It"],
+    movie = ["Scotiabank Theatre Toronto", "Hot Docs Ted Rogers Cinema", "TIFF Bell Lightbox"],
+    shopping = ["Eaton Centre", "Yorkdale Shopping Centre", "Fairview Mall"]
+];
 
-for (i = 0; i < Object.keys(grungy).length; i++) {
-    let count = i.toString();
-    let choice = grungy[count];
-    let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
-    let name = $(`<h4 class="name">`).html(choice.name);
-    let hours = $(`<p class="hours">`).html(choice.hours);
-    let reviews = $(`<p class="reviews">`).html(choice.reviews);
-    let image = $(`<img src="${choice.image}" style="float: left">`);
-    $(selection).append(image, name, hours, reviews);
-    console.log(selection);
-    $("#grungy-bars-list").append(selection);
-}
+var classy = [
+    bar = ["Speakeasy 21", "King Taps", "Drake One Fifty"],
+    boardGames = ["Snakes & Lattes", "401 Games", "Bampot Bohemian House"],
+    restaurant = ["The Chase Fish and Oyster", "Estiatorio Volos", "Kasa Moto"],
+    theatre = ["Tarragon", "Soulpepper", "CanStage"]
+];
 
-//Creating choice selection depending on the section
-$("#grungy-bars").on("click", function () {
-    for (i = 0; i < places.length; i++) {
-        let selection = $(`<li class="selection" value="${grungy - bars[i]}"`);
-        selection.append(grungy[i].name);
-        selection.append(grungy[i].hours);
-        selection.append(grungy[i].reviews);
-        selection.append(grungy[i].image);
-        $("#grungy-bars").prepend(selection);
-    }
+var buzzin = [
+    comedyClub = ["Comedy Bar", "The Second City Theater Toronto", "Yuk Yuk’s Comedy Club Toronto"],
+    escapeRooms = ["Mysterious Minds Escape Rooms", "Captive Escape Rooms Downtown Toronto", "Roundabout Canada"],
+    pub = ["Real Sports Bar", "The Dock Ellis", "Hurricanes Roadhouse Restaurant"],
+];
+
+var trashed = [
+    burlesqueClub = ["Painted Lady", "Revival", "Round Venue"],
+    casino = ["Canadian National Exhibition", "Fallsview Casino", "Casino Rama"],
+    club = ["Rebel Toronto", "El Convento Rico Nightclub", "The Fifth Social Club"],
+    dragBar = ["Buddies in Bad Times", "Crews and Tangos", "Woody’s and Sailor"]
+];
+
+var fucked = [
+    drugs = ["The Toronto Dispensary", "Cloud 6ix", "Zen Zoo"],
+    shisha = ["Shisha&Co", "Ali Baba Café and Restaurant", "King Shisha Lounge"],
+    stripClub = ["Brass Rail", "House of Lancaster Two", "Remingtons Men of Steel"],
+    toyStore = ["Stag Shop", "Seduction", "Northbound Leather"]
+];
+
+//Obtaining selection
+$("a").on("click", function () {
+    return selection = $(this).attr("value")
 });
 
-//Google Maps
-//Changes the Google Map and marker to the new location
-$(".selection").on("click", function () {
-    lcn = places[$(this).val()];
+function contentHeader() {
+    $("#swipe-1").html(choices[selection][0]);
+    $("#swipe-2").html(choices[selection][1]);
+    $("#swipe-3").html(choices[selection][2]);
+    $("#swipe-4").html(choices[selection][3]);
+    console.log("inside");
+};
+
+//Google Maps Marker
+// Changes the Google Map and marker to the new location
+$(".nav-content").on("click", ".selection", function () {
+    lcn = JSON.parse($(this).attr("coordinates"));
     console.log(lcn);
     map.panTo(lcn);
     marker.setPosition(lcn);
 });
 
-//Google Maps - only initialized once
+//Google Maps
 function initMap() {
-    console.log("inside " + JSON.stringify(lcn));
     map = new google.maps.Map(document.getElementById('map'), {
         center: lcn,
         zoom: 14
     });
-    marker = new google.maps.Marker({
-        position: lcn,
-        map: map
-    })
+    marker = new google.maps.Marker({ position: lcn, map: map })
+
+    //Dynamically populating the category sections depending on user selection
+    for (var cat = 0; cat < Object.keys(clean).length; cat++) {
+        for (var count = 0; count < Object.keys(clean[cat]).length; count++) {
+            var next = 0;
+            var request = {
+                query: clean[cat][count],
+                fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
+            }
+
+            service = new google.maps.places.PlacesService(map)
+            service.findPlaceFromQuery(request, callback);
+
+            function callback(results, status) {
+                next++;
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    let selection = $(`<div class="selection" style="clear:both; padding-bottom: 10px">`);
+                    console.log(results[0]);
+                    //Obtaining the location coordinates of the place
+                    let a = parseFloat(results[0].geometry.location.lat());
+                    let b = parseFloat(results[0].geometry.location.lng());
+                    let latlng = { lat: a, lng: b }
+                    selection.attr("coordinates", JSON.stringify(latlng));
+                    let name = $(`<h5 class="name">`).html(results[0].name);
+                    //Comparing if location is open or not
+                    if (!results[0].opening_hours) {
+                        var hours = $(`<p class="hours">`).html(`No idea`)
+                    } else if (results[0].opening_hours.open_now === true) {
+                        var hours = $(`<p class="hours">`).html(`Everybody get in here!`)
+                    } else {
+                        var hours = $(`<p class="hours">`).html(`You missed out!`)
+                    }
+                    let reviews = $(`<p class="reviews">`).html(results[0].rating + "/5");
+                    let image = $(`<img src="https://via.placeholder.com/100x100" style="float: left">`);
+                    $(selection).append(image, name, hours, reviews);
+                    $(sections[next]).append(selection);
+
+                } else {
+                    console.log(google.maps.places);
+                    console.log("Error");
+                }
+            }
+        };
+    };
 };
 
 //API key for weather
