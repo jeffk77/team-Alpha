@@ -31,98 +31,80 @@
 
         <div class="row" id="content-body">
 
-            <form>
-                <div class="container">
-                    <div class="row" id="dataEnter">
-                        <div class="form-group">
-                            <label for="name-input">What's your name?</label>
-                            <input class="form-control" id="name-input" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="age-input">How old are you?</label>
-                            <input class="form-control" id="age-input" type="text">
-                        </div>
-                    </div>
-                    <div class="row" id="filterEnter">
-                        <p class="range-field">
-                            <input type="range" id="filter-input" min="1" max="5" />
-                        </p>
-                    </div>
-                    <div id="choiceBox"></div>
-                </div>
-                <br>
-                <br>
 
-            </form>
-
-            <button class="btn btn-dark" id="adduser" type="submit">Submit</button>
         </div>
     </div>
 
-    <!--<div class="container">
-                <div class="col s12 m6 l2">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="assets/images/drunklevel1.png">
-                        </div>
-                        <div class="card-action">
-                            <a href="results.html" value="clean">Clean</a>
-                        </div>
-                    </div>
-                </div>
+    <form>
 
-                <div class="col s12 m6 l2">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="assets/images/drunklevel2.png">
-                        </div>
-                        <div class="card-action">
-                            <a href="results.html" value="classy">Classy</a>
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="input-field col l6 m7 s12 offset-l1">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="name-input" type="text" class="validate">
+                    <label for="name-input">Full Name</label>
                 </div>
-
-                <div class="col s12 m6 l2">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="assets/images/drunklevel3.png">
-                        </div>
-                        <div class="card-action">
-                            <a href="results.html" value="buzzin">Buzzin'</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s12 m6 l2">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="assets/images/drunklevel4.png">
-                        </div>
-                        <div class="card-action">
-                            <a href="results.html" value="trashed">Trashed</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s12 m6 l2">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="assets/images/drunklevel5.png">
-                        </div>
-                        <div class="card-action">
-                            <a href="results.html" value="fucked">Fucked</a>
-                        </div>
-                    </div>
+                <div class="input-field col l4 m5 s12">
+                    <i class="material-icons prefix">face</i>
+                    <input id="age-input" type="number" class="validate">
+                    <label for="age-input">Age</label>
                 </div>
             </div>
-
         </div>
-    </div>-->
+
+    </form>
+
+    <form>
+
+        <div class="container">
+            <div class="row">
+                <div class="col l2 m6 s12 offset-l1">
+                    <label>
+                        <img class="responsive-img drunkImg" src="assets/images/drunklevel1.png">
+                        <input name="group1" type="radio" id="filter-input" value="clean" />
+                        <span>Clean</span>
+                    </label>
+                </div>
+                <div class="col l2 m6 s12">
+                    <label>
+                        <img class="responsive-img drunkImg" src="assets/images/drunklevel2.png">
+                        <input name="group1" type="radio" id="filter-input" value="classy" />
+                        <span>Classy</span>
+                    </label>
+                </div>
+                <div class="col l2 m6 s12">
+                    <label>
+                        <img class="responsive-img drunkImg" src="assets/images/drunklevel3.png">
+                        <input name="group1" type="radio" id="filter-input" value="buzzin" />
+                        <span>Buzzin</span>
+                    </label>
+                </div>
+                <div class="col l2 m6 s12">
+                    <label>
+                        <img class="responsive-img drunkImg" src="assets/images/drunklevel4.png">
+                        <input name="group1" type="radio" id="filter-input" value="trashed" />
+                        <span>Trashed</span>
+                    </label>
+                </div>
+                <div class="col l2 m6 s12 offset-m3">
+                    <label>
+                        <img class="responsive-img drunkImg" src="assets/images/drunklevel5.png">
+                        <input name="group1" type="radio" id="filter-input" value="fucked" />
+                        <span>Fucked</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row inputButton">
+                <button class="btn btn-dark" id="adduser" type="submit">Submit</button>
+            </div>
+        </div>
+
+    </form>
 
     <footer class="page-footer">
         <div class="container">
             <div class="row">
-                    <h5 class="white-text">Search for some trouble, mothafuckaaaaaaahhhh!!!!!</h5>
+                <h5 class="white-text">Search for some trouble, mothafuckaaaaaaahhhh!!!!!</h5>
             </div>
         </div>
     </footer>

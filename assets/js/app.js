@@ -14,14 +14,17 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var userName = "";
+var userAge = "";
+var filterChoice = "";
 
 // Function to accept new user entries, into input variables. Accepting values on "click".
 $("#adduser").on("click", function (event) {
     event.preventDefault();
 
-    var userName = $("#name-input").val().trim();
-    var userAge = $("#age-input").val().trim();
-    var filterChoice = $("#filter-input").val().trim();
+    userName = $("#name-input").val().trim();
+    userAge = $("#age-input").val().trim();
+    filterChoice = $("#filter-input").val().trim();
 
     var newUser = {
         name: userName,
@@ -36,10 +39,6 @@ $("#adduser").on("click", function (event) {
     $("#age-input").val("");
     $("#filter-input").val("");
 
-});
-
-$(document).ready(function () {
-    $("#choiceBox").append("<img src='../assets/images/drunklevel1.png'>");
 });
 
 
