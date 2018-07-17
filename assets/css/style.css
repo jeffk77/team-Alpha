@@ -5,40 +5,52 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
 header {
     padding: 30px;
     text-align: center;
 }
+
 p {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
+
 .flow-text {
     font-size: 1.5em;
     padding: 20px;
 }
+
 .row .col {
     padding: 0;
 }
+
 .tabs-content {
     height: 796px;
 }
+
 #sketchylogo {
     padding: 20px;
     background-image: url("../images")
 }
+
 #mainlogo {
     padding: 30px;
 }
+
 .btn {
     margin: 15px;
+    float: right;
 }
+
 #content-body {
     text-align: center;
 }
+
 .page-footer {
     background-color: rgb(223, 171, 2);
 }
+
 footer {
     position: fixed;
     bottom: 0px;
@@ -46,24 +58,56 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
 #map {
     height: 100vh;
 }
+
 .card-action {
     font-size: 2em;
 }
+
 form {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
-.col {
-    text-align: center;
-}
+
 .inputButton {
     text-align: center;
 }
+
 .drunkImg {
     margin-top: 10px;
     margin-bottom: 15px;
+}
+
+img.responsive-img, video.responsive-video {
+    max-width: 94%;
+}
+
+.name {
+    color: black;
+    text-align: left;
+    margin-left: 16px;
+    padding-left: 108px;
+}
+
+.hours {
+    color: #868686;
+    text-align: left;
+    margin-left: 16px;
+    padding-left: 108px;
+    padding-bottom: 8px;
+}
+
+.reviews {
+    color: #F5A623;
+    text-align: left;
+    margin-left: 16px;
+    padding-left: 108px;
+}
+
+selection {
+    margin: 0;
 }
