@@ -3,10 +3,19 @@
 <html>
 
 <head>
+    <title>Sketchy - The "Looking for Trouble" App</title>
+
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Import Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900" rel="stylesheet">
+
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,62 +26,42 @@
     <div class="row">
 
         <div class="col s12 m4 l4">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header">
-                        <i class="material-icons">filter_1</i>Grungy Bars</div>
-                    <div class="collapsible-body">
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                        <div class="result">
-                            <p class="lead">
-                                This is an option
-                            </p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header">
-                        <i class="material-icons">filter_2</i>Strip Clubs</div>
-                    <div class="collapsible-body">
-                        <span>Lorem ipsum dolor sit amet.</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header">
-                        <i class="material-icons">filter_3</i>Places to get mugged</div>
-                    <div class="collapsible-body">
-                        <span>Lorem ipsum dolor sit amet.</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header">
-                        <i class="material-icons">filter_4</i>Other</div>
-                    <div class="collapsible-body">
-                        <span>Lorem ipsum dolor sit amet.</span>
-                    </div>
-                </li>
-            </ul>
-            <!-- Modal Trigger -->
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Weather</a>
+
+            <nav class="nav-extended">
+                <div class="nav-wrapper">
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Weather</a>
+
+                    <a href="#" class="brand-logo">
+                        Sketchy Results
+                        <!--This could be a name-->
+                    </a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                </div>
+                <div class="nav-content">
+                    <ul id="tabs-swipe-demo" class="tabs">
+                        <li class="tab col s3">
+                            <a class="active" href="#test-swipe-1" id="swipe-1">Cafe</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#test-swipe-2" id="swipe-2">Movies</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#test-swipe-3" id="swipe-3">Dessert</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#test-swipe-4" id="swipe-4">Shopping</a>
+                        </li>
+                    </ul>
+                    <div class="col s12 blue" id="test-swipe-1"></div>
+                    <div class="col s12 red" id="test-swipe-2"></div>
+                    <div class="col s12 green" id="test-swipe-3"></div>
+                    <div class="col s12 orange" id="test-swipe-4"></div>
+            </nav>
+
+            </div>
 
             <!-- Modal Structure -->
             <div id="modal1" class="modal bottom-sheet">
@@ -87,17 +76,20 @@
             </div>
         </div>
 
+
         <div class="col s12 m8 l8">
-            <div class="image">
-                <img src="images/GoogleMap.jpg">
-            </div>
+            <div id="map"></div>
         </div>
 
-        <!--jQuery link-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.js"></script>
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+        <script type="text/javascript" src="assets/js/materialize.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GkhwBYoEj-doKhJ91eWbaEFccC37p5E&libraries=places&callback=initMap">
+        </script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>
+
 </body>
 
 </html>
