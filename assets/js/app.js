@@ -14,21 +14,22 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-$(document).ready(function () {
-    $('#modal').modal();
-    $('#modal').modal('open');
-});
+var userName = "";
+var userAge = "";
+var filterChoice = "";
 
 // Function to accept new user entries, into input variables. Accepting values on "click".
-$("#adduser").on("click", function (event) {
+$("#adduser").on("click", function () {
     event.preventDefault();
 
-    var userName = $("#name-input").val().trim();
-    var userAge = $("#age-input").val().trim();
+    userName = $("#name-input").val().trim();
+    userAge = $("#age-input").val().trim();
+    filterChoice = $("#filter-input").val().trim();
 
     var newUser = {
         name: userName,
         age: userAge,
+        filter: filterChoice,
     };
 
     // Pushing values to Firebase.
@@ -36,7 +37,15 @@ $("#adduser").on("click", function (event) {
 
     $("#name-input").val("");
     $("#age-input").val("");
+    $("#filter-input").val("");
+
+    if (userAge < 19) {
+        window.location.href = "http://www.ytv.com";
+    } else {
+        window.location.href = "results.html";
+    }
 });
+
 
 //Google Maps Variables
 var places = {
@@ -84,7 +93,8 @@ var choices = {
     clean: ["cafe", "desert", "movie", "shopping"],
     classy: ["bar", "board games", "restaurant", "theatre"],
     buzzin: ["comedy club", "escape rooms", "pub"],
-    trashed: ["burlesque club", "casino", "club", "drag bar"]
+    trashed: ["burlesque club", "casino", "club", "drag bar"],
+    fucked: ["drugs", "shisha", "stripClub", "toyStore"]
 };
 
 var clean = [
