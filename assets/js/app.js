@@ -14,10 +14,6 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-$(document).ready(function () {
-    $('#modal').modal();
-    $('#modal').modal('open');
-});
 
 // Function to accept new user entries, into input variables. Accepting values on "click".
 $("#adduser").on("click", function (event) {
@@ -25,10 +21,12 @@ $("#adduser").on("click", function (event) {
 
     var userName = $("#name-input").val().trim();
     var userAge = $("#age-input").val().trim();
+    var filterChoice = $("#filter-input").val().trim();
 
     var newUser = {
         name: userName,
         age: userAge,
+        filter: filterChoice,
     };
 
     // Pushing values to Firebase.
@@ -36,7 +34,14 @@ $("#adduser").on("click", function (event) {
 
     $("#name-input").val("");
     $("#age-input").val("");
+    $("#filter-input").val("");
+
 });
+
+$(document).ready(function () {
+    $("#choiceBox").append("<img src='../assets/images/drunklevel1.png'>");
+});
+
 
 //Google Maps Variables
 var places = {
@@ -84,7 +89,8 @@ var choices = {
     clean: ["cafe", "desert", "movie", "shopping"],
     classy: ["bar", "board games", "restaurant", "theatre"],
     buzzin: ["comedy club", "escape rooms", "pub"],
-    trashed: ["burlesque club", "casino", "club", "drag bar"]
+    trashed: ["burlesque club", "casino", "club", "drag bar"],
+    fucked: ["drugs", "shisha", "stripClub", "toyStore"]
 };
 
 var clean = [
