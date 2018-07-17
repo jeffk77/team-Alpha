@@ -19,7 +19,7 @@ var userAge = "";
 var filterChoice = "";
 
 // Function to accept new user entries, into input variables. Accepting values on "click".
-$("#adduser").on("click", function (event) {
+$("#adduser").on("click", function () {
     event.preventDefault();
 
     userName = $("#name-input").val().trim();
@@ -39,6 +39,11 @@ $("#adduser").on("click", function (event) {
     $("#age-input").val("");
     $("#filter-input").val("");
 
+    if (userAge < 19) {
+        window.location.href = "http://www.ytv.com";
+    } else {
+        window.location.href = "results.html";
+    }
 });
 
 
