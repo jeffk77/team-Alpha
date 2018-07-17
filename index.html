@@ -23,126 +23,106 @@
 
 <body>
 
-    <!-- Modal Structure -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <div class="row">
-                <h4>Welcome to Sketchy... Introduce yourself!</h4>
-                <h6>Warning... you must be at least 19 years of age to ride THIS ride...</h6>
-
-                <form class="container">
-                    <div class="form-group">
-                        <label for="name-input">What's your name?</label>
-                        <input class="form-control" id="name-input" type="text">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="age-input">How old are you?</label>
-                        <input class="form-control" id="age-input" type="text">
-                    </div>
-
-                    <button class="btn btn-dark" id="adduser" type="submit">Submit</button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
     <div class="container">
-        <img class="responsive-img" src="assets/images/sketchlogo.png" id="mainlogo">
+        <header>
+            <img class="responsive-img" src="assets/images/sketchlogo.png" id="mainlogo">
+            <h4>What kind of trouble are you looking for?</h4>
+        </header>
+
         <div class="row" id="content-body">
-            <h2>What kind of trouble are you looking for?</h2>
 
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/sketchlogo.png">
-                        <span class="card-title">Card Title</span>
+            <form>
+                <div class="container">
+                    <div class="row" id="dataEnter">
+                        <div class="form-group">
+                            <label for="name-input">What's your name?</label>
+                            <input class="form-control" id="name-input" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="age-input">How old are you?</label>
+                            <input class="form-control" id="age-input" type="text">
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
+                    <div class="row" id="filterEnter">
+                        <p class="range-field">
+                            <input type="range" id="filter-input" min="1" max="5" />
+                        </p>
                     </div>
-                    <div class="card-action">
-                        <a href="results.html" value="clean">This is a link</a>
-                    </div>
+                    <div id="choiceBox"></div>
                 </div>
-            </div>
+                <br>
+                <br>
 
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/sketchlogo.png">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="results.html" value="classy">This is a link</a>
-                    </div>
-                </div>
-            </div>
+            </form>
 
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/sketchlogo.png">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="results.html" value="buzzin">This is a link</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/sketchlogo.png">
-                        <span class="card-title">Card Title </span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="results.html" value="trashed">This is a link</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/sketchlogo.png">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="results.html" value="fucked">This is a link</a>
-                    </div>
-                </div>
-            </div>
-
-
+            <button class="btn btn-dark" id="adduser" type="submit">Submit</button>
         </div>
     </div>
+
+    <!--<div class="container">
+                <div class="col s12 m6 l2">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="assets/images/drunklevel1.png">
+                        </div>
+                        <div class="card-action">
+                            <a href="results.html" value="clean">Clean</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l2">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="assets/images/drunklevel2.png">
+                        </div>
+                        <div class="card-action">
+                            <a href="results.html" value="classy">Classy</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l2">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="assets/images/drunklevel3.png">
+                        </div>
+                        <div class="card-action">
+                            <a href="results.html" value="buzzin">Buzzin'</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l2">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="assets/images/drunklevel4.png">
+                        </div>
+                        <div class="card-action">
+                            <a href="results.html" value="trashed">Trashed</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l2">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="assets/images/drunklevel5.png">
+                        </div>
+                        <div class="card-action">
+                            <a href="results.html" value="fucked">Fucked</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
 
     <footer class="page-footer">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
                     <h5 class="white-text">Search for some trouble, mothafuckaaaaaaahhhh!!!!!</h5>
-                </div>
             </div>
         </div>
     </footer>
