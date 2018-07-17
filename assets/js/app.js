@@ -207,26 +207,65 @@ function initMap() {
 };
 
 //API key for weather
+
+//API key for weather
 var APIKey = "&APPID=4041ca2a75ad9d5eb8e0379aea113e09"
 var lat
 var lon
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-    "lat=" + lat + "&lon=" + lon + APIKey;
+    "lat=43.761539&lon=-79.411079" + APIKey;
 
 $.ajax({
     url: queryURL,
     method: "GET"
 })
-    .then(function (response) {
-        console.log(queryURL);
-        console.log(response);
+.then(function(response) {
+    console.log(queryURL);
+    console.log(response);
 
-        //Transfering content to HTML
-        $(".").html("<h1>" + response + "</h1>");
-        //Logging the data in the console
-        console.log
-    })
+    
+    //Transfering temperature value to HTML
+    $("#temperature").html("<h2>" + response.main.temp + "</h2>");
+    
+    //function for unit conversion
+    function tempConverter (valNum) {
+        valNum = parseFloat(valNum);
+        document.getElementById("temperature").innerHTML = Math.round(valNum - 273.15)     
+    }
+
+    console.log(tempConverter(response.main.temp));
+    
+
+    //Logging the data in the console
+    console.log(response.main.temp);
+
+    //if temperature is below -20 C
+    if (response.main.temp < -20) {
+        $("p").html("I'm not going outside until the temperature is above my age!");
+    }
+
+    //if temperature is below 0 C
+    if (-20 <= response.main.temp < 0) {
+        $("p").html("My nipples can cut glass. Put on a coat!");
+    }
+
+    //if temperature is below 10 C
+    if (0 <= response.main.temp < 10) {
+        $("p").html("Sweater Weather isn't just a song, bitch");
+    }
+
+    //if temperature is below 20 C
+    if (10 <= response.main.temp < 20) {
+        $("p").html("Finally my winter fat is gone. Now I have spring rolls.");
+    }
+
+    //if temperature is above 20 C
+    if (20 <= response.main.temp) {
+        $("p").html("Today is National F**king Hate Florida Day");
+    }
+
+});
 
 // materialize code
 
